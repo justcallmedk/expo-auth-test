@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Button } from 'react-native-paper';
 import styles from '../App.style.js';
 
-import * as auth from '../components/auth/Auth.js';
+import auth from '../components/auth/Auth.js';
 
 export default function AccountScreen(props) {
   if(props.routes.map[props.routes.index].key !== 'account') {

@@ -46,9 +46,8 @@ export async function g_getProfile(accessToken) {
     headers: { Authorization: 'Bearer ' + accessToken },
   });
   let profile = await resp.json();
-  profile.method = 'google';
-  console.info('in get profile');
   console.info(profile);
+  profile.method = 'google';
   return profile;
 }
 

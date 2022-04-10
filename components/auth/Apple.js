@@ -44,9 +44,10 @@ export async function a_getProfile() {
       return null;
     }
   }
+  console.info(result);
   return {
     name : result.fullName.givenName + result.fullName.familyName,
-    email : result.email,
+    id : result.email,
     status : status,
     method : 'apple'
   }

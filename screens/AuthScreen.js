@@ -3,7 +3,7 @@ import { Image, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
 import styles from '../App.style.js';
-import * as auth from '../components/auth/Auth.js';
+import auth from '../components/auth/Auth.js';
 
 const buttonImgActive = require('../assets/images/btn_google_signin_light_normal_web.png');
 const buttonImgDisabled = require('../assets/images/btn_google_signin_light_disabled_web.png');
@@ -15,19 +15,16 @@ export default function AuthScreen(props) {
   const [buttonImg, setButtonImg] = useState(buttonImgActive);
 
   useEffect(async () => {
-    console.info('checking auth ...');
     if(props.profile) {
-      console.info('profile exists, returning');
+      //nothing to do when profile exists already
       return;
     }
 
     let profile;
     if(await SecureStore.getItemAsync('AppAuth.Apple')) {
-      console.info('checking apple auth ...');
       profile = await auth.apple.getProfile();
     }
     else if(await SecureStore.getItemAsync('AppAuth.Google')) {
-      console.info('checking google auth ...');
       profile = await auth.google.getProfile();
     }
     props.setProfile(profile);
@@ -42,6 +39,7 @@ export default function AuthScreen(props) {
     else if(method === 'apple') { //TODO: implement this
 
     }
+
     let profile = await auth[method].signInAsync();
     console.info(profile);
     props.setProfile(profile);
