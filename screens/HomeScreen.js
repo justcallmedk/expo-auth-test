@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Image, View, Text} from 'react-native';
-import { Button } from 'react-native-paper';
+import React from 'react';
+import { View, Text } from 'react-native';
 import styles from '../App.style.js';
 
 export default function HomeScreen(props) {
@@ -10,7 +9,7 @@ export default function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.foreground}>Hello, {props.profile.name} </Text>
+      <Text style={styles.foreground}>Hello, {props.profile.id} </Text>
     </View>
   );
 }

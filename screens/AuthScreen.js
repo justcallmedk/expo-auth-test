@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
 import styles from '../App.style.js';
 import auth from '../components/auth/Auth.js';
 
-const buttonImgActive = require('../assets/images/btn_google_signin_light_normal_web.png');
-const buttonImgDisabled = require('../assets/images/btn_google_signin_light_disabled_web.png');
-
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as SecureStore from 'expo-secure-store';
 
 export default function AuthScreen(props) {
-  const [buttonImg, setButtonImg] = useState(buttonImgActive);
 
   useEffect(async () => {
     if(props.profile) {
@@ -33,15 +29,15 @@ export default function AuthScreen(props) {
 
   const login = async(method) => {
     //handle button disabling
+    //TODO implement this
     if(method === 'google') {
-      setButtonImg(buttonImgDisabled);
     }
-    else if(method === 'apple') { //TODO: implement this
-
+    else if(method === 'apple') {
     }
 
     let profile = await auth[method].signInAsync();
     console.info(profile);
+    console.info('setting profile');
     props.setProfile(profile);
   }
 
@@ -49,7 +45,7 @@ export default function AuthScreen(props) {
     <View style={styles.container}>
       <Button mode="text"
               onPress={() => login('google')}>
-        <Image source={ buttonImg } />
+        <Image source={ require('../assets/images/btn_google_signin_light_normal_web.png') } />
       </Button>
       <AppleAuthentication.AppleAuthenticationButton
         buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
