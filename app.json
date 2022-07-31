@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "myapp",
     "name": "stock-duel",
     "slug": "stock-duel",
     "version": "1.0.0",

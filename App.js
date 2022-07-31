@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AuthScreen from './screens/AuthScreen';
 import NavScreen from './screens/NavScreen';
 
